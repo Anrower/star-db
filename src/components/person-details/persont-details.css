@@ -1,8 +1,11 @@
+.col-md-6 {
+  margin-top: 1rem;
+}
+
 .person-details {
   display: flex;
-  margin-top: 1rem;
   flex-direction: row;
-  padding: 1rem;
+  padding: .5rem;
 }
 
 .person-details .person-image {
