@@ -8,7 +8,7 @@ import SwapiService from "../../services/swapi-service";
 
 export default class PeoplePage extends Component {
 
-  swapiService = new SwapiService;
+  swapiService = new SwapiService();
 
   state = {
     selectedPerson: 3,
@@ -36,6 +36,9 @@ export default class PeoplePage extends Component {
         <div className="col-md-6">
           <ItemList onItemSelected={this.onPersonSelected}
             getData={this.swapiService.getAllPeople}
+            renderItem={({ name, gender, birthYear }) => (
+              `${name} (${gender}, ${birthYear})`
+            )}
           />
         </div>
         <div className="col-md-6">
