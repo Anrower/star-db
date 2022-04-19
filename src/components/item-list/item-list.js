@@ -6,11 +6,10 @@ import './/item-list.css';
 export default class ItemList extends Component {
 
   state = {
-    itemList: null
+    itemList: null,
   };
 
   componentDidMount() {
-
     const { getData } = this.props
 
     getData()
@@ -24,8 +23,8 @@ export default class ItemList extends Component {
   renderItems(arr) {
     return arr.map((item) => {
       const { id } = item;
+      const label = this.props.children(item);
 
-      const label = this.props.renderItem(item);
       return (
         <li className='list-group-item'
           key={id}
@@ -36,8 +35,8 @@ export default class ItemList extends Component {
     });
   }
 
-  render() {
 
+  render() {
     const { itemList } = this.state;
     if (!itemList) {
       return < Spinner />;

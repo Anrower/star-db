@@ -1,3 +1,3 @@
-import PersonDetails from './persont-details';
+import PersonDetails from './item-details';
 
 export default PersonDetails;
