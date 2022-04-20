@@ -1,21 +1,29 @@
-import React, { Component } from "react";
-import Header from "../header/header";
+import React, { Component } from 'react';
+
+import Header from '../header';
 import RandomPlanet from '../random-planet';
-import ErrorBoundry from "../error-boundry";
-import ErrorButton from '../error-button';
+import ErrorBoundry from '../error-boundry';
+
+import ItemDetails, { Record } from "../item-details/item-details";
 import SwapiService from "../../services/swapi-service";
-import Row from "../row";
-import ItemDetails, { Record } from "../person-details/item-details";
+
+import {
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails,
+  PersonList,
+  PlanetList,
+  StarshipList
+} from '../sw-components';
 
 import './app.css';
-import ItemList from "../item-list";
+
 export default class App extends Component {
 
   swapiService = new SwapiService();
 
-
   state = {
-    showRandomPlanet: true,
+    showRandomPlanet: true
   };
 
   toggleRandomPlanet = () => {
@@ -43,10 +51,10 @@ export default class App extends Component {
       <ItemDetails
         itemId={11}
         getData={getPerson}
-        getImageUrl={getPersonImage}
-      >
-        <Record field="gender" label="Gender: " />
-        <Record field="eyeColor" label="Eye Color: " />
+        getImageUrl={getPersonImage} >
+
+        <Record field="gender" label="Gender" />
+        <Record field="eyeColor" label="Eye Color" />
 
       </ItemDetails>
     );
@@ -55,11 +63,11 @@ export default class App extends Component {
       <ItemDetails
         itemId={5}
         getData={getStarship}
-        getImageUrl={getStarshipImage}
-      >
-        <Record field="model" label="Model: " />
-        <Record field="length" label="Length: " />
-        <Record field="costInCredits" label="Cost: " />
+        getImageUrl={getStarshipImage}>
+
+        <Record field="model" label="Model" />
+        <Record field="length" label="Length" />
+        <Record field="costInCredits" label="Cost" />
       </ItemDetails>
     );
 
@@ -67,29 +75,22 @@ export default class App extends Component {
       <ErrorBoundry>
         <div className="stardb-app">
           <Header />
-          {planet}
-          <ItemList
-            getData={getAllPeople}
-            onItemSelected={() => { }}
-          >
-            {({ name }) => <span>{name}</span>}
-          </ItemList>
-          <Row>
-            <button
-              className="toggle-planet btn btn-warning btn=lg"
-              onClick={this.toggleRandomPlanet}>
-              Toggle Random Planet
-            </button>
-            <ErrorButton />
-          </Row>
-          <Row
-            left={personDetails}
-            right={starshipDetails}
-          />
+
+          <PersonDetails itemId={11} />
+
+          <PlanetDetails itemId={5} />
+
+          <StarshipDetails itemId={9} />
+
+          <PersonList />
+
+          <StarshipList />
+
+          <PlanetList />
+
         </div>
       </ErrorBoundry>
     );
   }
 }
-
 
