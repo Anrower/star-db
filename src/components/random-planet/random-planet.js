@@ -48,6 +48,8 @@ export default class RandomPlanet extends Component {
     });
   };
 
+  //TODO update planets data if no data!
+  //1, 20, 22, 23, 24, 25, 26, 27, 28
   updatePlanet = () => {
     console.log('update');
     const id = Math.floor(Math.random() * 25) + 3;
